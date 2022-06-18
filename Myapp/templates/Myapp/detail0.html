@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+    </head>
+    <!-- p1: topic, p2: course_list-->
+    <body>
+        {% block topic %}
+            <!--用双大括号来引用变量-->
+            <p> Topic is {{topic.name}} </p>
+            <p> Category is {{topic_ctgry}}  </p>
+        {% endblock %}
+
+        {%  block course %}
+            <p> Related courses are :</p>
+            {% if course_list %}
+                {% for course in course_list %}
+                    <li> {{ course.name }}  ${{ course.price }}</li>
+                {% endfor %}
+            {% else %}
+
+            {% endif %}
+        {%  endblock %}
+
+    <P>
+        <a href={%  url 'Myapp:index' %}> Back to index </a>
+    </P>
+    </body>
+
+</html>

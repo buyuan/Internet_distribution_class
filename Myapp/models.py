@@ -21,7 +21,8 @@ class Student(User):
     interested_in = models.ManyToManyField(Topic)
 
     def __str__(self):
-        return self.first_name+' '+self.last_name + self.school
+        #return self.first_name+' '+self.last_name + self.school
+        return self.username
 
 
 
@@ -33,6 +34,7 @@ class Course(models.Model):
     #hours = models.IntegerField()
     for_everyone = models.BooleanField(default=True)
     description = models.TextField(max_length=300, null=True, blank=True)
+
 
     def __str__(self):
         return self.name

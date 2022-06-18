@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--IDOCTYPE 的意思是告知浏览器使用那种HTML版本，此时这个声明是HTML5-->
+
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> E-Learning WebApp! </title>
+</head>
+
+<body>
+    {%  block content %}
+        {%  if top_list %}
+            <h2> List of Topic</h2>
+            <ol>
+               {%  for topic in top_list %}
+                   <!-- Myapp:detail->view detail->detail0.html -->
+                 <li><a href={% url 'Myapp:detail' topic.id %}>{{ topic.name}}</a></li>
+               {% endfor %}
+             </ol>
+        {%  else %}
+            <Strong> There are no availiable topics!</Strong>
+        {% endif %}
+    {%  endblock %}
+<!-- 根据测试结果，下面的连接是找到的view-->
+<P><a href="/Myapp/about"><Strong>About page</Strong> in hardcoded URL (href="/Myapp/about") </a></P>
+<P><a href={% url 'Myapp:about' %}><Strong>About page</Strong> in Namespacing URL (href={'% url 'Myapp:about'%}) </a></P>
+</body>
+</html>
