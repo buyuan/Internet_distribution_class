@@ -1,0 +1,19 @@
+{% extends 'Myapp/base.html' %}
+<!--user.get_username可以从request中获取user name-->
+
+{% block body_block %}
+    {%  block content %}
+        {%  if top_list %}
+            <h2> List of Topic</h2>
+            <ol>
+               {%  for topic in top_list %}
+                   <!-- Myapp:detail->view detail->detail0.html -->
+                 <li><a href={% url 'Myapp:detail' topic.id %}>{{ topic.name}}</a></li>
+               {% endfor %}
+             </ol>
+        {%  else %}
+            <Strong> There are no availiable topics!</Strong>
+        {% endif %}
+    {%  endblock %}
+{% endblock %}
+{% block myhdg %}Hello {{ user.get_username }}{% endblock %}

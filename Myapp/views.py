@@ -38,7 +38,8 @@ def index(request):
 def index(request):
     top_list = Topic.objects.all().order_by('id')[:10]
     # test 'None' top_list = None
-    return render(request, 'Myapp/index0.html', {'top_list': top_list})
+#   return render(request, 'Myapp/index0.html', {'top_list': top_list})
+    return render(request, 'Myapp/index.html', {'top_list': top_list})
 '''
 #for Lab3
 def about(request):
@@ -49,15 +50,16 @@ def about(request):
 '''
 #for Lab4
 def about(request):
-    return render(request, 'Myapp/about0.html')
-
+#    return render(request, 'Myapp/about0.html')
+    return render(request, 'Myapp/about.html')
 #for lab4
 def detail(request, top_on):
 
     topic = get_object_or_404(Topic, id=top_on)
     course_list = Course.objects.filter(topic__name=topic.name).order_by('-price')
     topic_ctgry = topic.get_category_display()
-    return render(request, 'Myapp/detail0.html', {'topic': topic, 'course_list': course_list, 'topic_ctgry':topic_ctgry})
+    #return render(request, 'Myapp/detail0.html', {'topic': topic, 'course_list': course_list, 'topic_ctgry':topic_ctgry})
+    return render(request, 'Myapp/detail.html', {'topic': topic, 'course_list': course_list, 'topic_ctgry':topic_ctgry})
 
 
 '''

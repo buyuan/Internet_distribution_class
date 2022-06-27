@@ -1,0 +1,16 @@
+h1{
+    background-color: darkblue;
+    color: aliceblue;
+    font-size: xx-large;
+    font-family:"Times New Roman", Times, serif;
+    /*可以用 command+shift+R强制刷新浏览器，及时显示效果*/
+    font-style: italic;
+    text-align: center;
+
+}
+
+.hbar1 {
+    display: inline;
+    margin: 15px;
+
+}

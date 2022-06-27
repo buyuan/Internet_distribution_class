@@ -1,0 +1,6 @@
+1。differece between null==true and blank==true
+-》
+blank： 针对表单，表单中为空，是在页面上，是否可以为空（非必填），
+null：针对数据库，数据库中是一个null对象
+2.  difference between users in "AUTHENTICATION AND AUTHORIZATION" and "app"
+

@@ -1,0 +1,23 @@
+{% extends "Myapp/base.html" %}
+
+{% block body_block %}
+            {% block topic %}
+            <!--用双大括号来引用变量-->
+            <p> Topic is {{topic.name}} </p>
+            <p> Category is {{topic_ctgry}}  </p>
+        {% endblock %}
+
+        {%  block course %}
+            <p> Related courses are :</p>
+            {% if course_list %}
+                {% for course in course_list %}
+                    <li> {{ course.name }}  ${{ course.price }}</li>
+                {% endfor %}
+            {% else %}
+
+            {% endif %}
+        {%  endblock %}
+{% endblock %}
+
+{% block title %}Detail_Page{% endblock %}
+{% block myhdg %}{% endblock %}
