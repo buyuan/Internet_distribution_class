@@ -1,0 +1,22 @@
+{%  extends 'Myapp/base.html' %}
+{% block body_block %}
+    <p><strong>Place_Order: {{ msg }}</strong></p>
+    <div>
+    <ol>
+        {% for cour in courlist%}
+            <li>{{ cour.name }}  ${{ cour.price }}</li>
+            <!--action 后面其实是数据要提交给的url-->
+        {% endfor %}
+    </ol>
+    </div>
+    <div>
+            <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit"/>
+            </form>
+    </div>
+{% endblock  %}
+
+{% block myhdg %}{% endblock %}
+{% block title %}place_order{% endblock %}

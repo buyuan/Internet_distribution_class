@@ -5,6 +5,8 @@ from django.http import HttpResponse
 from .models import Topic, Course, Student, Order
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
+from .forms import InterestForm, OrderForm
+
 '''
 def index(request):
     top_list = Topic.objects.all().order_by('id')[:10]
@@ -102,3 +104,51 @@ def detail(request, top_on):
         response.write(li)
     return response
 '''
+
+def courses(request):
+    courlist = Course.objects.all().order_by('id')
+    return render(request, 'Myapp/courses.html', {'courlist': courlist})
+
+def place_order(request):
+    msg = ""
+    courlist = Course.objects.all()
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            if order.levels <= order.course.stages:
+               # order.save()
+                #add discount for lab8
+                if(order.course.price>=150):
+                    order.course.price = order.course.discount()
+                order.save()
+                msg = 'Your course has been ordered successfully.'
+            else:
+                msg = 'You exceeded the number of levels for this course.'
+            return render(request, 'Myapp/order_response.html', {'msg': msg})
+    else:
+        form = OrderForm()
+    return render(request, 'Myapp/place_order.html', {'form': form, 'msg': msg, 'courlist': courlist})
+
+'''
+QUes: how to update date with InterestForm
+def coursedetail(request, cour_id):
+    cur = get_object_or_404(Course, id=cour_id)
+    if request.method == "POST":
+        form = InterestForm(instance=cur, data=request.POST)
+        if form.is_valid():
+            form.save()
+    elif request.method == "GET":
+        form = InterestForm(instance=cur)
+
+    return render(request, 'Myapp/coursedetail.html', {'form': form, 'cur': cur})
+'''
+def coursedetail(request, cour_id):
+    cur = get_object_or_404(Course, id=cour_id)
+    return render(request, 'Myapp/coursedetail.html', { 'cur': cur})
+
+
+def test(request):
+    form = InterestForm()
+    return render(request, 'Myapp/test.html', {'form': form})
+
