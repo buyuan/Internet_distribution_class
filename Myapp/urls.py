@@ -9,4 +9,9 @@ urlpatterns = [
     path(r'', views.index, name='index'),
     path(r'about', views.about, name='about'),
     path(r'detail/<int:top_on>/', views.detail, name='detail'),
+    path(r'test', views.test, name='test'),
+    path(r'courses', views.courses, name='course_list'),
+    path(r'place_order', views.place_order, name='place_order'),
+    path(r'courses/<int:cour_id>/', views.coursedetail, name='coursedetail'),
+
 ]

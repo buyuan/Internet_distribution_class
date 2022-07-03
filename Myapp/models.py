@@ -2,7 +2,7 @@ from django.db import models
 import datetime
 from django.contrib.auth.models import User
 from django.utils import timezone
-
+from decimal import Decimal
 # Create your models here.
 class Topic(models.Model):
     Category_choice = [(6, 'Development'), (1, 'Business'), (2, 'IT & Software'), (3, 'Finance & Accounting'), (4, 'Health&Fitness')]
@@ -34,7 +34,12 @@ class Course(models.Model):
     #hours = models.IntegerField()
     for_everyone = models.BooleanField(default=True)
     description = models.TextField(max_length=300, null=True, blank=True)
+    #add for lab7
+    interested = models.PositiveIntegerField(default=0)
+    stages = models.PositiveIntegerField(default=3)
 
+    def discount(self):
+        return self.price * Decimal(0.9)
 
     def __str__(self):
         return self.name
