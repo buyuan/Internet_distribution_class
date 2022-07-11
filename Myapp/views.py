@@ -117,10 +117,9 @@ def place_order(request):
         if form.is_valid():
             order = form.save(commit=False)
             if order.levels <= order.course.stages:
-               # order.save()
-                #add discount for lab8
-                if(order.course.price>=150):
-                    order.course.price = order.course.discount()
+                price = order.course.price
+                if price >= 150:
+                    order.order_price = order.course.discount()
                 order.save()
                 msg = 'Your course has been ordered successfully.'
             else:
@@ -130,23 +129,25 @@ def place_order(request):
         form = OrderForm()
     return render(request, 'Myapp/place_order.html', {'form': form, 'msg': msg, 'courlist': courlist})
 
-'''
-QUes: how to update date with InterestForm
+#comments 和level没有提供合适的处理逻辑
 def coursedetail(request, cour_id):
     cur = get_object_or_404(Course, id=cour_id)
     if request.method == "POST":
-        form = InterestForm(instance=cur, data=request.POST)
+        form = InterestForm(request.POST)
         if form.is_valid():
-            form.save()
-    elif request.method == "GET":
-        form = InterestForm(instance=cur)
-
+            cur.interested = cur.interested+1
+            cur.save()
+            #如果这里不跳转别的地方，就会留在当前页面，可以不停的提交,所以直接调用index
+            return index(request)
+            #return render(request, "Myapp/index.html")
+    else: #include GET and others in case
+        form = InterestForm()
     return render(request, 'Myapp/coursedetail.html', {'form': form, 'cur': cur})
 '''
 def coursedetail(request, cour_id):
     cur = get_object_or_404(Course, id=cour_id)
     return render(request, 'Myapp/coursedetail.html', { 'cur': cur})
-
+'''
 
 def test(request):
     form = InterestForm()

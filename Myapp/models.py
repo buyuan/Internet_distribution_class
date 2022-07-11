@@ -51,10 +51,11 @@ class Order(models.Model):
     levels = models.PositiveIntegerField(null=True, blank=True)
     order_status = models.IntegerField(choices=Status_Choice, default=1)
     order_date = models.DateField(null=True, blank=True)
-
+    # add field for store the price of this order
+    order_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     def total_cost(self):
         prc = Course.objects.get(course=self.course).price
-        return prc * self.levels
+        return prc
 
     def __str__(self):
         return self.course.name + self.student.school.__str__()
