@@ -1,27 +1,13 @@
-<!DOCTYPE html>
 
-<!--change "{'%  load staticfiles '%} " -->
-{%  load static %}
-<html lang="en">
-    <head>
-            <link rel="stylesheet" type="text/css" href={%  static 'Myapp/style.css' %} />
-            <!--rel：relationship， 是指当前文档和被链接文档之间的关系，比如CSS就是stylesheet，这个是一个关键字
-            type， 被链接文档的MIME类型-->
-            <title>E-Learning WebApp - {% block title %}Welcome!{% endblock %}</title>
-    </head>
-    <body>
+{%  extends 'Myapp/base.html' %}
+{% block body_block %}
         <div>
-            <h1>{% block myhdg %}Hello User{% endblock %}</h1>
-            {% block body_block %}***{% endblock %}
+            <form action='' method='post'>
+                {% csrf_token %}
+                {{ loginForm }}
+                <input type="submit" value="login"/>
+            </form>
         </div>
-        <hr /> <!--this is for creating a horizontal line-->
-        <div>
-            <ul>
-                <li class="hbar1"><a href="/Myapp/about" >Find out about our E-Learning site</a><br></li>
-                <li class="hbar1"><a href={% url 'Myapp:index' %}>Click here to return to main page</a><br></li>
-                <!--我发现，这个路由，是url中的 name,而且冒号前后不能有空格-->
-                <li class="hbar1"><a href={% url 'Myapp:course_list' %}>Check the available courses list</a></li>
-            </ul>
-        </div>
-    </body>
-</html>
+{% endblock  %}
+{% block myhdg %}Welcome, please login{% endblock %}
+{% block title %}login_Page{% endblock %}

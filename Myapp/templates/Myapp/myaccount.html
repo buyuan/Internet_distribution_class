@@ -1,27 +1,33 @@
-<!DOCTYPE html>
+{% extends 'Myapp/base.html' %}
+<!--user.get_username可以从request中获取user name-->
+{% block body_block %}
+    {%  block content %}
+        <div>
+             {%  if course_list %}
+                <h2> Ordered Courses</h2>
+                <ol>
+                   {%  for crs in course_list %}
+                       <li>{{ crs }}</li>
+                   {% endfor %}
+                 </ol>
+            {%  else %}
+                <Strong> There is no Course </Strong>
+            {% endif %}
+        </div>
 
-<!--change "{'%  load staticfiles '%} " -->
-{%  load static %}
-<html lang="en">
-    <head>
-            <link rel="stylesheet" type="text/css" href={%  static 'Myapp/style.css' %} />
-            <!--rel：relationship， 是指当前文档和被链接文档之间的关系，比如CSS就是stylesheet，这个是一个关键字
-            type， 被链接文档的MIME类型-->
-            <title>E-Learning WebApp - {% block title %}Welcome!{% endblock %}</title>
-    </head>
-    <body>
         <div>
-            <h1>{% block myhdg %}Hello User{% endblock %}</h1>
-            {% block body_block %}***{% endblock %}
+            {%  if topic_list %}
+                <h2> Topics' of Order Courses </h2>
+                <ol>
+                   {%  for tp in topic_list %}
+                       <li>{{ tp.name }}</li>
+                   {% endfor %}
+                 </ol>
+            {%  else %}
+                <Strong> There is no interested topic </Strong>
+            {% endif %}
         </div>
-        <hr /> <!--this is for creating a horizontal line-->
-        <div>
-            <ul>
-                <li class="hbar1"><a href="/Myapp/about" >Find out about our E-Learning site</a><br></li>
-                <li class="hbar1"><a href={% url 'Myapp:index' %}>Click here to return to main page</a><br></li>
-                <!--我发现，这个路由，是url中的 name,而且冒号前后不能有空格-->
-                <li class="hbar1"><a href={% url 'Myapp:course_list' %}>Check the available courses list</a></li>
-            </ul>
-        </div>
-    </body>
-</html>
+
+    {%  endblock %}
+{% endblock %}
+{% block myhdg %}Hello {{ firstname }} {{ lastName }}{% endblock %}

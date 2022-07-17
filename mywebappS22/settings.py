@@ -122,3 +122,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Close the session when user closes the browser
+'''
+Some browsers (Chrome, for example) provide settings that allow users to continue browsing sessions after closing and 
+re-opening the browser. In some cases, this can interfere with the SESSION_EXPIRE_AT_BROWSER_CLOSE setting and prevent
+ sessions from expiring on browser close. Please be aware of this while testing Django applications which have the 
+ SESSION_EXPIRE_AT_BROWSER_CLOSE setting enabled
+'''
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
