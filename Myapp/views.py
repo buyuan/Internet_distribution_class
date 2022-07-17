@@ -1,12 +1,14 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Topic, Course, Student, Order
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
-from .forms import InterestForm, OrderForm
-
+from .forms import InterestForm, OrderForm, LoginForm
+from django.contrib.auth import authenticate,login, logout
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 '''
 def index(request):
     top_list = Topic.objects.all().order_by('id')[:10]
@@ -148,6 +150,46 @@ def coursedetail(request, cour_id):
     cur = get_object_or_404(Course, id=cour_id)
     return render(request, 'Myapp/coursedetail.html', { 'cur': cur})
 '''
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user:
+            if user.is_active:
+                login(request, user)
+                # HttpResponseRedirect 只能接受硬编码URL，所以需要reverse解析naming space之后，才能给到HttpResponseRedirect
+                return HttpResponseRedirect(reverse('Myapp:index'))
+            else:
+                return HttpResponse('Your account is disabled.')
+        else:
+            return HttpResponse('Invalid login details.')
+    else:
+        return render(request, 'Myapp/login.html', {'loginForm': LoginForm})
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('Myapp:index'))
+
+@login_required
+def myaccount(request):
+    usr = request.user
+    #有办法用对象来判断吗？因为student中没有唯一的字段，username可以重复，而且我已经取出来对象了
+    #Student 中的对象如何和user中的对象关联？ python中父对象如何找到子对象？
+    if Student.objects.get(username=usr.username):
+        ord_list = Order.objects.filter(student=usr)
+        tpc_list = Topic.objects.filter(student=usr)
+        cur_list = []
+        for odr in ord_list:
+            crs = odr.course.name
+            if crs not in cur_list:
+                cur_list.append(crs)
+        return render(request, 'Myapp/myaccount.html', {'firstname': usr.first_name, 'lastName': usr.last_name,
+                                                        'course_list': cur_list, 'topic_list': tpc_list})
+    else:
+        msg = 'You are not a registered student.'
+        return render(request, 'Myapp/order_response.html', {'msg': msg})
 
 def test(request):
     form = InterestForm()
