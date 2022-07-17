@@ -9,6 +9,8 @@ from .forms import InterestForm, OrderForm, LoginForm
 from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.utils import timezone
+import json
 '''
 def index(request):
     top_list = Topic.objects.all().order_by('id')[:10]
@@ -40,10 +42,13 @@ def index(request):
 '''
 #for Lab4
 def index(request):
+    if 'last_login' not in request.session:
+        return HttpResponse('Your last login was more than one hour ago')
     top_list = Topic.objects.all().order_by('id')[:10]
+    last_login = request.session['last_login']
     # test 'None' top_list = None
 #   return render(request, 'Myapp/index0.html', {'top_list': top_list})
-    return render(request, 'Myapp/index.html', {'top_list': top_list})
+    return render(request, 'Myapp/index.html', {'top_list': top_list, 'last_login': last_login})
 '''
 #for Lab3
 def about(request):
@@ -55,10 +60,13 @@ def about(request):
 #for Lab4
 def about(request):
 #    return render(request, 'Myapp/about0.html')
-    return render(request, 'Myapp/about.html')
+    ct = request.session.get('about_visits’', 0)
+    request.session['about_visits’'] = ct+1
+    #测试发现，这个是指，一个网页，value时间内没有请求，就会失效,并不是网页本身保持value时间内不失效
+    request.session.set_expiry(300)
+    return render(request, 'Myapp/about.html', {'about_visits': ct})
 #for lab4
 def detail(request, top_on):
-
     topic = get_object_or_404(Topic, id=top_on)
     course_list = Course.objects.filter(topic__name=topic.name).order_by('-price')
     topic_ctgry = topic.get_category_display()
@@ -156,6 +164,12 @@ def user_login(request):
         password = request.POST['password']
         user = authenticate(username=username, password=password)
         if user:
+            now = timezone.localtime(timezone.now())
+            json_str = json.dumps({'created_at': now}, default=str)
+            #session 好像只能存序列化的string， 不能存对象
+            request.session['last_login'] = json_str
+            # It is easier to test via setting 2 seconds
+            request.session.set_expiry(3600)
             if user.is_active:
                 login(request, user)
                 # HttpResponseRedirect 只能接受硬编码URL，所以需要reverse解析naming space之后，才能给到HttpResponseRedirect
@@ -169,7 +183,8 @@ def user_login(request):
 
 @login_required
 def user_logout(request):
-    logout(request)
+    del request.session['last_login']
+    #logout(request)
     return HttpResponseRedirect(reverse('Myapp:index'))
 
 @login_required
@@ -190,6 +205,17 @@ def myaccount(request):
     else:
         msg = 'You are not a registered student.'
         return render(request, 'Myapp/order_response.html', {'msg': msg})
+
+def testCookie(request):
+    if request.method == "GET":
+        if request.session.test_cookie_worked():
+            request.session.delete_test_cookie()
+            return HttpResponse("Cookie is active in you browser")
+        else:
+            request.session.set_test_cookie()
+            return HttpResponse("Please enable cookies and try again")
+    return render(request, 'Myapp/index.html')
+
 
 def test(request):
     form = InterestForm()
