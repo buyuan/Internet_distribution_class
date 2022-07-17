@@ -15,3 +15,7 @@ class OrderForm(forms.ModelForm):
         widgets = {'student': forms.RadioSelect, 'order_date': forms.SelectDateWidget}
         initial = {'order_date': datetime.date}
         labels = {'student': 'student_label', 'course': 'course_label'}
+
+class LoginForm(forms.Form):
+    username = forms.CharField(required=True, label='username', max_length=100)
+    password = forms.CharField(required=True, label='password', max_length=20)
