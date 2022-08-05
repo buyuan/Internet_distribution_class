@@ -218,12 +218,11 @@ def getPassword(request):
         mail = request.POST['email']
         try:
             user = User.objects.get(email=mail)
-            for usr in user:
-                pwd = getRandomPwd()
-                context = "your username is " + usr.username + "\nyour password is " + pwd
-                usr.set_password(pwd)
-                usr.save()
-                send_pwd(mail, context)
+            pwd = getRandomPwd()
+            context = "your username is " + user.username + "\nyour password is " + pwd
+            user.set_password(pwd)
+            user.save()
+            send_pwd(mail, context)
             return HttpResponse("A mail has been sent, please check it.")
         except User.DoesNotExist:
             return HttpResponse("No such an email")
