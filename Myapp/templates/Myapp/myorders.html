@@ -1,0 +1,33 @@
+{%  extends 'Myapp/base.html' %}
+
+{% block body_block %}
+         <h2>My Order Lists</h2>
+        {% if order_list %}
+        <table>
+            <thead>
+            <tr>
+                    <th>course</th>
+                    <th>level</th>
+                    <th>status</th>
+                    <th>order date</th>
+                    <th>price</th>
+            </tr>
+            </thead>
+            <tbody>
+             {%  for order in order_list %}
+                <tr>
+                    <td>{{ order.course }}</td>
+                    <td>{{ order.levels }}</td>
+                    <td>{{ order.order_status }}</td>
+                    <td>{{ order.order_date }}</td>
+                    <td>{{ sßorder.order_price }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+             </table>
+        {% else %}
+            <br>
+            <h3>No Order</h3>
+        {% endif %}
+{% endblock %}
+{% block title %}my orders{% endblock %}

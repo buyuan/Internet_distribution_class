@@ -11,7 +11,12 @@
     </head>
     <body>
         <div>
-            <h1>{% block myhdg %}Hello User{% endblock %}</h1>
+            {% if request.user.is_authenticated %}
+                <h1>{% block myhdg %}Hello {{request.user.username }} {% endblock %}</h1>
+            {%  else %}
+                <h1>Hello User </h1>
+            {% endif %}
+
             {% block body_block %}***{% endblock %}
         </div>
         <hr /> <!--this is for creating a horizontal line-->
@@ -23,5 +28,15 @@
                 <li class="hbar1"><a href={% url 'Myapp:course_list' %}>Check the available courses list</a></li>
             </ul>
         </div>
+        <hr /> <!--this is for creating a horizontal line-->
+    <div>
+        {% if request.user.is_authenticated %}
+            <li class="hbar1"><a href={% url 'Myapp:logout' %}>Logout</a></li>
+            <li class="hbar1"><a href={% url 'Myapp:myaccount' %}>My account</a><br></li>
+        {% else %}
+            <li class="hbar1"><a href="/Myapp/register" >Register</a></li>
+             <li class="hbar1"><a href={% url 'Myapp:login' %}>login</a></li>
+        {% endif %}
+    </div>
     </body>
 </html>

@@ -9,12 +9,11 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -70,7 +69,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mywebappS22.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -80,7 +78,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -100,7 +97,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -111,7 +107,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -131,3 +126,16 @@ re-opening the browser. In some cases, this can interfere with the SESSION_EXPIR
  SESSION_EXPIRE_AT_BROWSER_CLOSE setting enabled
 '''
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# SMTP configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # google SMTP 服务器
+EMAIL_PORT = 587  # TLS通讯号
+EMAIL_HOST_USER = 'neobuyuan@gmail.com'  # 发送者的邮箱
+EMAIL_HOST_PASSWORD = 'cqbwfqpcawozavqa'  # 邮箱密码, 如果开启了两步验证，需要单独在google设置一个APP专用密码
+EMAIL_USE_TLS = True  # 开启TLS，安全性
+
+# media set
+MEDIA_ROOT = os.path.join(BASE_DIR, 'Myapp/static/Myapp', 'media')
+MEDIA_URL = "/media/"
+

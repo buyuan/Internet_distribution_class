@@ -1,0 +1,3 @@
+1.static是一个固定名字的文件夹，在Django中指明用来存static file，图片，cSS，等等
+2.static 下面还要添加app folder是因为，多个app时，如果有同名的静态文件，前面加一个app目录以区别引用的名称是，
+例如， app1/h.txt,  app2/h.txt ， app1，app2 都是static下面的文件夹
