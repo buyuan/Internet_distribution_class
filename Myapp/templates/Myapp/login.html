@@ -7,7 +7,10 @@
                 {{ loginForm }}
                 <input type="submit" value="login"/>
             </form>
+            <hr/>
+            <p class="hbar1"><a href={% url 'Myapp:getPassword' %}>forget my password</a></p>
         </div>
+        <hr/>
+
 {% endblock  %}
-{% block myhdg %}Welcome, please login{% endblock %}
 {% block title %}login_Page{% endblock %}

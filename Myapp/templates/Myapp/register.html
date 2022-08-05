@@ -1,0 +1,23 @@
+{%  extends 'Myapp/base.html' %}
+{% block body_block %}
+    <p><strong>Register Here</strong></p>
+    <div>
+            <form action="" method="post">
+            {% csrf_token %}
+                <p>{{frm.avatar.label}} : {{frm.avatar}}</p>
+                <p><span style="color: red">*</span>{{frm.username.label}} : {{frm.username}}</p>
+                <p><span style="color: red">*</span>{{frm.password.label}} : {{frm.password}}</p>
+                <p>{{frm.password2.label}} : {{frm.password2}}</p>
+                <p>{{frm.first_name.label}} : {{frm.first_name}}</p>
+                <p>{{frm.last_name.label}} : {{frm.last_name}}</p>
+                <p>{{frm.email.label}} : {{frm.email}}</p>
+                <p>{{frm.school.label}} : {{frm.school}}</p>
+                <p>{{frm.address.label}} : {{frm.address}}</p>
+                <p>{{frm.city.label}} : {{frm.city}}</p>
+                <p>{{frm.interested_in.label}} : {{frm.interested_in}}</p>
+                <input type="submit" value="Submit"/>
+            </form>
+    </div>
+{% endblock  %}
+
+{% block title %}register{% endblock %}

@@ -2,6 +2,10 @@
 <!--user.get_username可以从request中获取user name-->
 {% block body_block %}
     {%  block content %}
+        <!--alt 是当图片显示出问题时候，显示的替代文字-->
+       <p>
+           <img  src='{{avatar.url}}' alt='This is an avatar'  width='100' height='100'>
+       </p>
         <div>
              {%  if course_list %}
                 <h2> Ordered Courses</h2>

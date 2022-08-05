@@ -5,18 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36bf1714-00cb-4038-a56f-a4e937679da0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Myapp/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myapp/templates/Myapp/coursedetail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myapp/templates/Myapp/courses.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myapp/templates/Myapp/order_response.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Myapp/templates/Myapp/place_order.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AssignmentAndLabs/lab3" beforeDir="false" afterPath="$PROJECT_DIR$/AssignmentAndLabs/lab3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Myapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Myapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Myapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Myapp/templates/Myapp/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/templates/Myapp/about.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Myapp/templates/Myapp/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/templates/Myapp/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Myapp/templates/Myapp/coursedetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/templates/Myapp/coursedetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Myapp/templates/Myapp/courses.html" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/templates/Myapp/courses.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Myapp/templates/Myapp/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/templates/Myapp/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Myapp/templates/Myapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/templates/Myapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Myapp/templates/Myapp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/templates/Myapp/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Myapp/templates/Myapp/myaccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/templates/Myapp/myaccount.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Myapp/templates/Myapp/order_response.html" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/templates/Myapp/order_response.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Myapp/templates/Myapp/place_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/templates/Myapp/place_order.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Myapp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mywebappS22/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mywebappS22/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mywebappS22/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mywebappS22/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +57,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/buyuan/PycharmProjects/mywebappS22/Myapp/templates/Myapp&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -57,7 +65,12 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Myapp/templates/Myapp" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Myapp/fixtures" />
+      <recent name="$PROJECT_DIR$/Myapp/static/Myapp" />
       <recent name="$PROJECT_DIR$/Myapp" />
       <recent name="$PROJECT_DIR$/Myapp/templates/Myapp" />
       <recent name="$PROJECT_DIR$/Myapp/templates/Myapp2" />
@@ -149,6 +162,24 @@
       <workItem from="1656610039295" duration="27567000" />
       <workItem from="1656684444354" duration="11623000" />
       <workItem from="1656729747714" duration="8967000" />
+      <workItem from="1656960242912" duration="3698000" />
+      <workItem from="1656966086028" duration="2032000" />
+      <workItem from="1657242114428" duration="3996000" />
+      <workItem from="1657247767449" duration="16000" />
+      <workItem from="1657301097333" duration="22000" />
+      <workItem from="1657559949189" duration="78000" />
+      <workItem from="1657564010726" duration="1758000" />
+      <workItem from="1657889825083" duration="24225000" />
+      <workItem from="1657995414081" duration="6664000" />
+      <workItem from="1658069349767" duration="7465000" />
+      <workItem from="1658082837751" duration="29000" />
+      <workItem from="1658163994670" duration="550000" />
+      <workItem from="1658165426559" duration="10079000" />
+      <workItem from="1658886473227" duration="9482000" />
+      <workItem from="1659127293994" duration="1189000" />
+      <workItem from="1659154922306" duration="31986000" />
+      <workItem from="1659278887782" duration="6633000" />
+      <workItem from="1659633306651" duration="30044000" />
     </task>
     <servers />
   </component>
@@ -167,6 +198,6 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/mywebappS22$unitest.coverage" NAME="unitest Coverage Results" MODIFIED="1655652763094" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/AssignmentAndLabs" />
+    <SUITE FILE_PATH="coverage/mywebappS22$unitest.coverage" NAME="unitest Coverage Results" MODIFIED="1659658751360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/AssignmentAndLabs" />
   </component>
 </project>
